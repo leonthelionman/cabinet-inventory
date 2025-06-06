@@ -1,0 +1,33 @@
+{
+  "drawerData": {
+    "unit1-drawer-001": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "part": "91415A105",
+        "link": "https://www.mcmaster.com/91415A105/"
+      }
+    ],
+    "unit2-drawer-062": [
+      null,
+      null,
+      null,
+      null,
+      {
+        "part": "91415A105",
+        "link": "https://www.mcmaster.com/91415A105/"
+      },
+      {
+        "part": "91415A105",
+        "link": "https://www.mcmaster.com/91415A105/"
+      }
+    ]
+  },
+  "slotCounts": {
+    "unit1-drawer-001": 6,
+    "unit2-drawer-062": 6
+  }
+}
