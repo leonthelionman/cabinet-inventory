@@ -139,8 +139,10 @@ function searchPart() {
   for (const [drawer, slots] of Object.entries(drawerData)) {
     slots.forEach((slot, idx) => {
       if (!slot) return;
-      const partMatch = slot.part && slot.part.toLowerCase().includes(term);
-      const linkMatch = slot.link && slot.link.toLowerCase().includes(term);
+      //const partMatch = slot.part && slot.part.toLowerCase().includes(term);
+      //const linkMatch = slot.link && slot.link.toLowerCase().includes(term);
+      const partMatch = slot.part && slot.part.toLowerCase() === term;
+      const linkMatch = slot.link && slot.link.toLowerCase() === term;
 
       if (partMatch || linkMatch) {
         const match = drawer.match(/unit(\d+)-drawer-(\d+)/);
@@ -178,3 +180,13 @@ function updateFillBars() {
     el.appendChild(bar);
   });
 }
+
+// Add background click to close modal
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('drawerModal');
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+});
