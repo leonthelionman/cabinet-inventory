@@ -86,26 +86,29 @@ h1 {
 }
 .modal {
   position: fixed;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  background: rgba(0, 0, 0, 0.6);
-  width: 100%;
-  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent; /* or use rgba(0,0,0,0) */
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  z-index: 1000;
 }
+
 .modal-content {
-  background: white;
-  color: black;
-  padding: 20px;
-  width: 350px;
-  border-radius: 8px;
+  background: #000000;
+  color: white;
+  padding: 30px;
+  width: 400px;
+  border-radius: 12px;
   position: relative;
   z-index: 1001;
+  pointer-events: auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
+
 .close {
   float: right;
   cursor: pointer;
@@ -119,11 +122,17 @@ input {
   margin-bottom: 10px;
 }
 a.part-link {
-  color: blue;
+  color: red;
   text-decoration: underline;
   display: block;
   margin-bottom: 8px;
 }
+
+a.part-link,
+a.part-link:visited {
+  color: red;
+}
+
 
 .header {
   text-align: center;
@@ -185,4 +194,129 @@ a.part-link {
   height: 1px;
   background-color: black;
   z-index: 2;
+}
+
+
+/*
+.slot-legend {
+  position: fixed;
+  top: 300px;
+  left: -40px;
+  width: 600px;
+  max-height: 90vh; 
+  z-index: 999;
+  pointer-events: none; 
+  opacity: 1;
+}
+*/
+
+
+.legend-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  margin-right: -350px; /* move image closer to Unit 1 */
+}
+
+
+.slot-legend {
+  position: sticky;
+  top: 300px;
+  width: 300px;
+  height: auto;
+  opacity: 1;
+  pointer-events: none;
+}
+
+
+
+.slot-label {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin-bottom: 6px;
+  display: inline-block;
+  min-width: 60px;
+}
+
+.slot-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.slot-container a.part-link {
+  color: #66ccff;
+  text-decoration: underline;
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+.slot-container button {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.modal select {
+  display: block;
+  margin: 0 auto 20px auto;
+  background: #222;
+  color: white;
+  padding: 5px 10px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-content input {
+  background: #222;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 4px 8px;
+  width: 100%;
+  margin-right: 10px;
+}
+
+
+/*    */
+
+/* Align slots and buttons, keep your structure */
+.slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #111;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Style red slot label */
+.slot-label,
+.slot label {
+  color: red;
+  font-weight: bold;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+/* Style part links */
+.part-link {
+  color: red;
+  text-decoration: underline;
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+/* Button styling */
+.add-button,
+.edit-button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }

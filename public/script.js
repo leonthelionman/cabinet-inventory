@@ -61,7 +61,7 @@ function openModal(id, unitName, num) {
   };
   container.appendChild(slotSelect);
 
-  for (let i = 5; i >= 6 - slotCounts[id]; i--) {
+for (let i = 6 - slotCounts[id]; i <= 5; i++) {
     const visualSlot = 6 - i;
     const slotDiv = document.createElement("div");
     slotDiv.classList.add("slot");
@@ -132,6 +132,12 @@ function searchPart() {
   const results = document.getElementById("searchResults");
   results.innerHTML = "";
 
+  const image = document.getElementById("slotImage");
+  if (image) {
+    image.src = "Slot 0.png";
+  }
+
+
   if (term.startsWith("https://www.mcmaster.com/")) {
     term = term.replace("https://www.mcmaster.com/", "").replace(/\/$/, "");
   }
@@ -139,8 +145,7 @@ function searchPart() {
   for (const [drawer, slots] of Object.entries(drawerData)) {
     slots.forEach((slot, idx) => {
       if (!slot) return;
-      //const partMatch = slot.part && slot.part.toLowerCase().includes(term);
-      //const linkMatch = slot.link && slot.link.toLowerCase().includes(term);
+
       const partMatch = slot.part && slot.part.toLowerCase() === term;
       const linkMatch = slot.link && slot.link.toLowerCase() === term;
 
@@ -149,9 +154,22 @@ function searchPart() {
         if (match) {
           const unitNum = match[1];
           const drawerNum = match[2];
-          const visualSlot = 6 - idx;
+
+          const count = slotCounts[drawer] || 6;
+          const firstVisibleIdx = 6 - count;
+
+          if (idx < firstVisibleIdx || idx > 5) return; // Skip invisible slots
+
+          const visualSlot = count - (idx - firstVisibleIdx);
+
           const li = document.createElement("li");
           li.textContent = `${slot.part} is in Unit: ${unitNum}, Drawer: ${drawerNum}, Slot: ${visualSlot}`;
+
+          const image = document.getElementById("slotImage");
+          if (image) {
+            image.src = `Slot ${visualSlot}.png`;
+          }
+
           li.style.whiteSpace = "nowrap";
           results.appendChild(li);
 
@@ -166,6 +184,7 @@ function searchPart() {
     });
   }
 }
+
 
 function updateFillBars() {
   Object.keys(drawerData).forEach(drawerId => {

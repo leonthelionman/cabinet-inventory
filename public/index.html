@@ -1,21 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cabinet Inventory Tracker</title>
+  <title>McMaster Inventory Tracker</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
   <div class="header">
-    <h1>Cabinet Inventory Tracker</h1>
+    <h1>McMaster Inventory Tracker</h1>
   </div>
 
   <div class="content-wrapper">
+    <div class="legend-wrapper">
+      <!-- <img src="slot-legend.png" class="slot-legend" alt="Slot Number Guide">-->
+      <img id="slotImage" src="Slot 0.png" class="slot-legend" alt="Slot Guide">
+    </div>
+
     <div class="side-panel">
       <input type="text" id="searchInput" placeholder="Search part number..." oninput="searchPart()">
       <ul id="searchResults"></ul>
     </div>
+
     <div class="cabinet-layout">
       <div class="cabinet-section" id="cabinet-1"><h3>Unit 1</h3><div class="grid-container" id="grid-1"></div></div>
       <div class="cabinet-section" id="cabinet-2"><h3>Unit 2</h3><div class="grid-container" id="grid-2"></div></div>
